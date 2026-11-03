@@ -1,0 +1,21 @@
+pre-commit:
+  piped: true
+  jobs:
+    - name: eslint
+      glob: "*.{ts,tsx,js}"
+      run: bunx eslint --fix --max-warnings=0 {staged_files}
+      stage_fixed: true
+    - name: prettier
+      glob: "*.{ts,tsx,js,json,css,md,html,yml,yaml}"
+      run: bunx prettier --write {staged_files}
+      stage_fixed: true
+
+commit-msg:
+  jobs:
+    - name: commitlint
+      run: bunx commitlint --edit {1}
+
+pre-push:
+  jobs:
+    - name: typecheck
+      run: bun run typecheck
