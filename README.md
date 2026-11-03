@@ -4,6 +4,7 @@ Production-ready React 19 + Vite starter built on **Feature-Sliced Design** with
 
 [![CI](https://github.com/AlexanderMokeichuk/vite-react-fsd-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/AlexanderMokeichuk/vite-react-fsd-starter/actions/workflows/ci.yml)
 [![License: MIT-0](https://img.shields.io/badge/license-MIT--0-blue.svg)](LICENSE)
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-buy%20me%20a%20coffee-ff5e5b?logo=ko-fi&logoColor=white)](https://ko-fi.com/alexandermokeichuk)
 
 ## Why this one
 

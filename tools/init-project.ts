@@ -7,6 +7,7 @@ const STARTER_URL = "https://github.com/AlexanderMokeichuk/vite-react-fsd-starte
 const STARTER_ONLY = [
   ".github/ISSUE_TEMPLATE",
   ".github/pull_request_template.md",
+  ".github/FUNDING.yml",
   "CONTRIBUTING.md",
   "LICENSE",
   "tools/init-project.ts",
