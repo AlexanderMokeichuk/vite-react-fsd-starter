@@ -22,19 +22,19 @@ cp .env.example .env.local
 bun run dev
 ```
 
-Or press **Use this template** on GitHub, clone your new repo and run `bun install && bun tools/init-project.ts` to remove the starter's own files.
+Or press **Use this template** on GitHub, clone your new repo and run `bun install && bun tools/init-project.ts --force` to remove the starter's own files.
 
 ## Stack
 
-|                   |                                                                                                                           |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Core              | React 19, TypeScript (strict), Vite 8, Re[![License: MIT](https://img.shields.io/badge/license-MIT--0-blue.svg)](LICENSE) |
+|                   |                                                                                                  |
+| ----------------- | ------------------------------------------------------------------------------------------------ |
+| Core              | React 19, TypeScript (strict), Vite 8, React Compiler, Bun                                       |
 | act Compiler, Bun |
-| UI                | Tailwind CSS v4, shadcn/ui (Radix), lucide-react, sonner                                                                  |
-| State             | TanStack Query for server data, Zustand for client state                                                                  |
-| Forms and data    | react-hook-form + zod, TanStack Table, date-fns                                                                           |
-| Quality           | ESLint with FSD boundaries, Prettier with import and class sorting, lefthook, commitlint, Vitest                          |
-| Delivery          | Docker (Bun build, nginx runtime), GitHub Actions                                                                         |
+| UI                | Tailwind CSS v4, shadcn/ui (Radix), lucide-react, sonner                                         |
+| State             | TanStack Query for server data, Zustand for client state                                         |
+| Forms and data    | react-hook-form + zod, TanStack Table, date-fns                                                  |
+| Quality           | ESLint with FSD boundaries, Prettier with import and class sorting, lefthook, commitlint, Vitest |
+| Delivery          | Docker (Bun build, nginx runtime), GitHub Actions                                                |
 
 ## Scripts
 

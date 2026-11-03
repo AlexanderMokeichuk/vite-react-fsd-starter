@@ -2,7 +2,9 @@ import { spawnSync } from "node:child_process";
 import { readFile, rm, writeFile } from "node:fs/promises";
 import { basename } from "node:path";
 
-const STARTER_URL = "https://github.com/AlexanderMokeichuk/vite-react-fsd-starter";
+const STARTER_NAME = "vite-react-fsd-starter";
+const STARTER_URL = `https://github.com/AlexanderMokeichuk/${STARTER_NAME}`;
+const FORCE = process.argv.includes("--force");
 
 const STARTER_ONLY = [
   ".github/ISSUE_TEMPLATE",
@@ -55,10 +57,13 @@ function exec(command: string, ...args: string[]): boolean {
   return spawnSync(command, args, { stdio: "ignore" }).status === 0;
 }
 
-async function cleanPackage(): Promise<string> {
-  const pkg: Record<string, unknown> = JSON.parse(await readFile("package.json", "utf8"));
+async function cleanPackage(pkg: Record<string, unknown>): Promise<string> {
   for (const field of STARTER_FIELDS) {
     delete pkg[field];
+  }
+  const scripts = pkg.scripts;
+  if (scripts && typeof scripts === "object") {
+    delete (scripts as Record<string, unknown>).postinstall;
   }
   pkg.version = "0.0.0";
   await writeFile("package.json", `${JSON.stringify(pkg, null, 2)}\n`);
@@ -66,8 +71,12 @@ async function cleanPackage(): Promise<string> {
 }
 
 async function main(): Promise<void> {
+  const pkg: Record<string, unknown> = JSON.parse(await readFile("package.json", "utf8"));
+  if (pkg.name === STARTER_NAME && !FORCE) {
+    return;
+  }
   await Promise.all(STARTER_ONLY.map((path) => rm(path, { recursive: true, force: true })));
-  const name = await cleanPackage();
+  const name = await cleanPackage(pkg);
   await writeFile("README.md", projectReadme(name));
   exec("bun", "x", "prettier", "--write", "README.md", "package.json");
 
